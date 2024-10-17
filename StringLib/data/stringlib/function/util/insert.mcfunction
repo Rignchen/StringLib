@@ -5,6 +5,7 @@
 ##    - String: Original string                                                                         ##
 ##    - Insertion: String you want to insert                                                            ##
 ##    - Index: Position for the Insertion                                                               ##
+## 2. Run this function with the 'stringlib:input insert' data storage                                  ##
 ##                                                                                                      ##
 ## Output: A single combined string                                                                     ##
 ##         Example:                                                                                     ##

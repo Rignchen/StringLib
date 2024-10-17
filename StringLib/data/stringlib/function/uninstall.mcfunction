@@ -16,12 +16,22 @@ scoreboard players reset #StringLib.ShowLoadMessage
 scoreboard players reset #StringLib.c100
 scoreboard players reset #StringLib.StringsTotal
 scoreboard players reset #StringLib.CharsLeft
+scoreboard players reset #StringLib.CharsTotal
 scoreboard players reset #StringLib.ConcatsLeft
+scoreboard players reset #StringLib.SuccessCheck
+scoreboard players reset #StringLib.FindLength
+scoreboard players reset #StringLib.Index
+scoreboard players reset #StringLib.CheckString.CharsLeft
+scoreboard players reset #StringLib.CheckString.IsFindLength
 
 data remove storage stringlib:zprivate data
 data remove storage stringlib:input concat
+data remove storage stringlib:input find
+data remove storage stringlib:input insert
 data remove storage stringlib:output concat
 data remove storage stringlib:output to_lowercase
 data remove storage stringlib:output to_uppercase
 data remove storage stringlib:output to_number
 data remove storage stringlib:output to_string
+data remove storage stringlib:output find
+data remove storage stringlib:output insert

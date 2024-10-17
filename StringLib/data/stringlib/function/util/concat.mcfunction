@@ -1,7 +1,8 @@
 ##########################################################################################################
 ##                                              HOW TO USE                                              ##
 ##########################################################################################################
-## 1. Run this function with the 'stringlib:input concat' data storage set to a list of strings         ##
+## 1. Set the 'stringlib:input concat' data storage to a list of strings                                ##
+## 2. Run this function with the 'stringlib:input' data storage                                         ##
 ##                                                                                                      ##
 ## Output: A single combined string                                                                     ##
 ##         Example: ["hello","world"] => "helloworld"                                                   ##
