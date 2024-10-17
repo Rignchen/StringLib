@@ -2,6 +2,7 @@
 ##                                              HOW TO USE                                              ##
 ##########################################################################################################
 ## 1. Run this function with the 'Input' macro variable set to what you want to convert to lowercase    ##
+##    Note: This function will cover the entire unicode range of letters, but is also noticeably slower ##
 ##                                                                                                      ##
 ## Output: Lowercase version of your input                                                              ##
 ##         Example: "ABC" => "abc"                                                                      ##
@@ -15,7 +16,7 @@ execute store result score #StringLib.CharsLeft StringLib run data get storage s
 data modify storage stringlib:temp data.Char set string storage stringlib:temp data.Input 0 1
 
 # Capitalize each character
-function stringlib:zprivate/to_lowercase/main with storage stringlib:temp data
+function stringlib:zprivate/to_lowercase/main_full with storage stringlib:temp data
 
 # Combine the characters again
 data modify storage stringlib:temp data2.PrevInput set from storage stringlib:input concat
