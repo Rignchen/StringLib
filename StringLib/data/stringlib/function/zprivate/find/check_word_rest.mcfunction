@@ -8,5 +8,5 @@ scoreboard players remove #StringLib.CheckString.CharsLeft StringLib 1
 data modify storage stringlib:temp data.CheckString.String set string storage stringlib:temp data.String 1
 data modify storage stringlib:temp data.CheckString.Find set string storage stringlib:input find.Find 1
 
-function stringlib:zprivate/find/check_string_loop
+function stringlib:zprivate/find/check_word_rest_loop
 execute if score #StringLib.SuccessCheck StringLib matches 1 run return 1

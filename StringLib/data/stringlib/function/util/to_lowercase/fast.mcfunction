@@ -1,7 +1,7 @@
 ##########################################################################################################
 ##                                              HOW TO USE                                              ##
 ##########################################################################################################
-## 1. Run this function with the 'Input' macro variable set to what you want to convert to lowercase    ##
+## 1. Run this function with the 'String' macro variable set to what you want to convert to lowercase   ##
 ##    Note: This function only covers the letters A-Z, but is noticeably faster in return               ##
 ##                                                                                                      ##
 ## Output: Lowercase version of your input                                                              ##
@@ -11,7 +11,7 @@
 ##########################################################################################################
 
 # Setup
-$data modify storage stringlib:temp data.Input set value "$(Input)"
+$data modify storage stringlib:temp data.Input set value "$(String)"
 execute store result score #StringLib.CharsLeft StringLib run data get storage stringlib:temp data.Input
 data modify storage stringlib:temp data.Char set string storage stringlib:temp data.Input 0 1
 

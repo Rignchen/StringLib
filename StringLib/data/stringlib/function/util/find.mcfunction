@@ -4,22 +4,52 @@
 ## 1. Set the following data in the 'stringlib:input find' data storage:                                ##
 ##    - String: Original string                                                                         ##
 ##    - Find: String you want to search for within the original string                                  ##
+##    - n: How many occurences you are looking for                                                      ##
+##        - Unset or 0: All occurences                                                                  ##
+##        - Positive: First n occurences                                                                ##
+##        - Negative: Last n occurences                                                                 ##
 ## 2. Run this function with the 'stringlib:input find' data storage                                    ##
 ##                                                                                                      ##
-## Output: Start index of the first occurrence of the string (No output if nothing is found)            ##
+## Output: List of all start indices for every occurrence of the string ([-1] if nothing is found)      ##
 ##         Example:                                                                                     ##
 ##                 - String: "Hello World!"                                                             ##
-##                 - Find: "World"                                                                      ##
-##                 => Output: 6                                                                         ##
+##                 - Find: "l"                                                                          ##
+##                 - Amount: 1                                                                          ##
+##                 => Output: [2]                                                                       ##
+##                                                                                                      ##
+##                 - String: "Hello World!"                                                             ##
+##                 - Find: "l"                                                                          ##
+##                 - Amount: Unset                                                                      ##
+##                 => Output: [2,3,9]                                                                   ##
+##                                                                                                      ##
+##                 - String: "Hello World!"                                                             ##
+##                 - Find: "l"                                                                          ##
+##                 - Amount: -2                                                                         ##
+##                 => Output: [9,3]                                                                     ##
 ##                                                                                                      ##
 ## The output is found in the 'stringlib:output find' data storage                                      ##
 ##########################################################################################################
 
-# Search for 'Find' inside 'String'
+# Search for 'Find' inside 'String' (FindAmount is altered in the functions, so the order is very important)
 data modify storage stringlib:temp data.String set from storage stringlib:input find.String
 execute store result score #StringLib.FindLength StringLib run data get storage stringlib:input find.Find
 execute store result score #StringLib.CharsTotal StringLib run data get storage stringlib:temp data.String
 scoreboard players operation #StringLib.CharsTotal StringLib -= #StringLib.FindLength StringLib
-scoreboard players set #StringLib.Index StringLib 1
-function stringlib:zprivate/find/main
+execute store result score #StringLib.FindAmount StringLib run data get storage stringlib:input find.n
+
+execute unless score #StringLib.FindAmount StringLib matches ..-1 run scoreboard players set #StringLib.Index StringLib 1
+execute if score #StringLib.FindAmount StringLib matches ..-1 run scoreboard players operation #StringLib.Index StringLib = #StringLib.CharsTotal StringLib
+
+data modify storage stringlib:output find set value []
+
+execute if score #StringLib.FindAmount StringLib matches -1 run data modify storage stringlib:output find append value -1
+execute if score #StringLib.FindAmount StringLib matches -1 run function stringlib:zprivate/find/reversed/check_word_start_loop
+execute if score #StringLib.FindAmount StringLib matches ..-2 run function stringlib:zprivate/find/reversed/main
+
+execute if score #StringLib.FindAmount StringLib matches 1 run data modify storage stringlib:output find append value -1
+execute if score #StringLib.FindAmount StringLib matches 1 run function stringlib:zprivate/find/check_word_start_loop
+execute if score #StringLib.FindAmount StringLib matches 0.. unless score #StringLib.FindAmount StringLib matches 1 run function stringlib:zprivate/find/main
+
+
+scoreboard players set #StringLib.FoundNothing StringLib 0
 data remove storage stringlib:temp data

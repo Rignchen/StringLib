@@ -8,4 +8,4 @@ execute if score #StringLib.CheckString.CharsLeft StringLib matches 1 store resu
 scoreboard players remove #StringLib.CheckString.CharsLeft StringLib 1
 data modify storage stringlib:temp data.CheckString.String set string storage stringlib:temp data.CheckString.String 1
 data modify storage stringlib:temp data.CheckString.Find set string storage stringlib:temp data.CheckString.Find 1
-function stringlib:zprivate/find/check_string_loop
+function stringlib:zprivate/find/check_word_rest_loop

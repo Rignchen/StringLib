@@ -2,7 +2,7 @@
 ##                                              HOW TO USE                                              ##
 ##########################################################################################################
 ## 1. Set the 'stringlib:input concat' data storage to a list of strings                                ##
-## 2. Run this function with the 'stringlib:input' data storage                                         ##
+## 2. Run this function                                                                                 ##
 ##                                                                                                      ##
 ## Output: A single combined string                                                                     ##
 ##         Example: ["hello","world"] => "helloworld"                                                   ##

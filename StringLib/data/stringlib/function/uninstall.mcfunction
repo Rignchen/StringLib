@@ -20,7 +20,9 @@ scoreboard players reset #StringLib.CharsTotal
 scoreboard players reset #StringLib.ConcatsLeft
 scoreboard players reset #StringLib.SuccessCheck
 scoreboard players reset #StringLib.FindLength
+scoreboard players reset #StringLib.FindAmount
 scoreboard players reset #StringLib.Index
+scoreboard players reset #StringLib.FoundNothing
 scoreboard players reset #StringLib.CheckString.CharsLeft
 scoreboard players reset #StringLib.CheckString.IsFindLength
 
