@@ -15,4 +15,4 @@ execute if score #StringLib.SuccessCheck StringLib matches 0 run return 0
 data modify storage stringlib:input concat append from storage stringlib:temp data.StringBefore[]
 data modify storage stringlib:input concat append from storage stringlib:input replace.Replace
 data modify storage stringlib:temp data.StringBefore set value []
-return 1
+return run scoreboard players add #StringLib.ReturnValue StringLib 1

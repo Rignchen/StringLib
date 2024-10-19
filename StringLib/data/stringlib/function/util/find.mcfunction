@@ -3,14 +3,14 @@
 ##########################################################################################################
 ## 1. Set the following data in the 'stringlib:input find' data storage:                                ##
 ##    - String: Original string                                                                         ##
-##    - Find: String you want to search for within the original string                                  ##
-##    - n: How many occurences you are looking for                                                      ##
-##        - Unset or 0: All occurences                                                                  ##
-##        - Positive: First n occurences                                                                ##
-##        - Negative: Last n occurences                                                                 ##
+##    - Find: String you want to search for                                                             ##
+##    - n: How many instances you are looking for                                                       ##
+##        - Unset or 0: All                                                                             ##
+##        - Positive: First n                                                                           ##
+##        - Negative: Last -n                                                                           ##
 ## 2. Run this function                                                                                 ##
 ##                                                                                                      ##
-## Output: List of all start indices for every occurrence of the string ([-1] if nothing is found)      ##
+## Output: List of all start indices for every instances  of the string ([-1] if nothing is found)      ##
 ##         Example:                                                                                     ##
 ##                 - String: "Hello World!"                                                             ##
 ##                 - Find: "l"                                                                          ##
@@ -26,6 +26,8 @@
 ##                 - Find: "l"                                                                          ##
 ##                 - Amount: -2                                                                         ##
 ##                 => Output: [9,3]                                                                     ##
+##                                                                                                      ##
+## Return value: Number of instances found                                                              ##
 ##                                                                                                      ##
 ## The output is found in the 'stringlib:output find' data storage                                      ##
 ##########################################################################################################
@@ -56,5 +58,5 @@ scoreboard players set #StringLib.FoundNothing StringLib 0
 data remove storage stringlib:temp data
 
 # Return Values
-execute unless data storage stringlib:output {find:[-1]} run return 1
-return fail
+execute if data storage stringlib:output {find:[-1]} run return fail
+return run execute if data storage stringlib:output find[]

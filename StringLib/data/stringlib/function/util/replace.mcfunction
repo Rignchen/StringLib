@@ -5,10 +5,10 @@
 ##    - String: Original string                                                                         ##
 ##    - Find: String you want to replace                                                                ##
 ##    - Replace: What you replace it with                                                               ##
-##    - n: How many occurences you want to replace                                                      ##
-##        - Unset or 0: All occurences                                                                  ##
-##        - Positive: First n occurences                                                                ##
-##        - Negative: Last n occurences                                                                 ##
+##    - n: How many instances you want to replace                                                       ##
+##        - Unset or 0: All                                                                             ##
+##        - Positive: First n                                                                           ##
+##        - Negative: Last -n                                                                           ##
 ## 2. Run this function                                                                                 ##
 ##                                                                                                      ##
 ## Output: String with all the 'Find' instances replaced by 'Replace'                                   ##
@@ -31,10 +31,14 @@
 ##                 - Amount: -1                                                                         ##
 ##                 => Output: "Hello Word!"                                                             ##
 ##                                                                                                      ##
-## The output is found in the 'stringlib:output find' data storage                                      ##
+## Return value: Number of replacements made                                                            ##
+##                                                                                                      ##
+## The output is found in the 'stringlib:output replace' data storage                                   ##
 ##########################################################################################################
 
 # Setup
+scoreboard players set #StringLib.ReturnValue StringLib 0
+
 data modify storage stringlib:temp data.String set from storage stringlib:input replace.String
 execute store result score #StringLib.FindLength StringLib run data get storage stringlib:input replace.Find
 execute store result score #StringLib.CharsTotal StringLib run data get storage stringlib:temp data.String
@@ -78,5 +82,5 @@ data remove storage stringlib:temp data
 data remove storage stringlib:temp data2
 
 # Return Values
-execute if score #StringLib.SuccessCheck StringLib matches 1 run return 1
+execute if score #StringLib.SuccessCheck StringLib matches 1 run return run scoreboard players get #StringLib.ReturnValue StringLib
 return fail
