@@ -8,7 +8,7 @@
 ##        - Unset or 0: All occurences                                                                  ##
 ##        - Positive: First n occurences                                                                ##
 ##        - Negative: Last n occurences                                                                 ##
-## 2. Run this function with the 'stringlib:input find' data storage                                    ##
+## 2. Run this function                                                                                 ##
 ##                                                                                                      ##
 ## Output: List of all start indices for every occurrence of the string ([-1] if nothing is found)      ##
 ##         Example:                                                                                     ##
@@ -50,6 +50,11 @@ execute if score #StringLib.FindAmount StringLib matches 1 run data modify stora
 execute if score #StringLib.FindAmount StringLib matches 1 run function stringlib:zprivate/find/check_word_start_loop
 execute if score #StringLib.FindAmount StringLib matches 0.. unless score #StringLib.FindAmount StringLib matches 1 run function stringlib:zprivate/find/main
 
-
 scoreboard players set #StringLib.FoundNothing StringLib 0
+
+# Reset
 data remove storage stringlib:temp data
+
+# Return Values
+execute unless data storage stringlib:output {find:[-1]} run return 1
+return fail

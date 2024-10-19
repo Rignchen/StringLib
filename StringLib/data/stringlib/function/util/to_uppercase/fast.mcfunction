@@ -32,5 +32,4 @@ execute unless data storage stringlib:temp data2.PrevInput run data remove stora
 execute unless data storage stringlib:temp data2.PrevOutput run data remove storage stringlib:output concat
 
 # Reset
-data remove storage stringlib:temp data
 data remove storage stringlib:temp data2
