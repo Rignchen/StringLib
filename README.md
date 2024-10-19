@@ -1,5 +1,6 @@
 # StringLib
 A Minecraft Data Pack library that offers highly optimized implementations for many useful string manipulation utilities.\
+Download: [Modrinth](https://modrinth.com/datapack/stringlib)\
 For inquiries, please contact **@silicatYT** on Discord.
 
 ## Features
