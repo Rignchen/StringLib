@@ -8,6 +8,8 @@ For inquiries, please contact **@silicatYT** on Discord.
   - Example: `["123","456","789]` &rarr; `"123456789"`
 - `find`: Get a list of indexes for instances of a string. You can also go in reverse and limit the number of results.
   - Example: `{String:"Looking for the last 'o' in this sentence", Find:"o", n:-1}` &rarr; `[22]`
+- `split`: Split a string into a list of strings based on a delimiter.
+  - Example: `{String:"This is a sentence", Delimiter:" "}` &rarr; `["This","is","a","sentence"]`
 - `replace`: Replace instances of a string with another string. You can also go in reverse and limit the number of replacements.
   - Example: `{String:"Bad example", Find:"Bad", Replace:"Great"}` &rarr; `"Great example"`
 - `to_uppercase / to_lowercase`: Convert a string to uppercase or lowercase. Choose between a fast and a full version, the latter supporting the entire Unicode range.
