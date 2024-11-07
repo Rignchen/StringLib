@@ -44,6 +44,9 @@ data modify storage stringlib:output find set value []
 # Get the list of required variables
 data modify storage stringlib:temp data.String set from storage stringlib:input split.String
 data modify storage stringlib:temp data.SplitIndexes set from storage stringlib:output find
+# Is the list of indexes reversed?
+execute store result score #StringLib.IsReversed StringLib run data get storage stringlib:input split.Amount
+execute store success score #StringLib.IsReversed StringLib if score #StringLib.IsReversed StringLib matches ..-1
 
 # Get separator length
 execute store result score #StringLib.FindLength StringLib run data get storage stringlib:input split.Separator
