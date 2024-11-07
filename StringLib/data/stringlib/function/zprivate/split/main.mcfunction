@@ -6,3 +6,9 @@
 # - #StringLib.FindLength StringLib: Length of the separator (= length of the split)
 # - #StringLib.IsReversed StringLib: Is the list of indexes reversed?
 
+data remove storage stringlib:temp data.SplitIndexes[-1]
+
+# Loop through the split indexes
+scoreboard players remove #StringLib.RemainingSplits StringLib 1
+execute if score #StringLib.RemainingSplits StringLib matches 1.. run function stringlib:zprivate/split/main with storage stringlib:temp data
+
