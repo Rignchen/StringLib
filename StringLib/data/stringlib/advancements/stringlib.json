@@ -1,0 +1,17 @@
+{
+	"display": {
+		"icon": {
+			"item": "minecraft:string"
+		},
+		"title": "String Lib",
+		"description": "Minecraft library handling string manipulation.",
+		"show_toast": false,
+		"announce_to_chat": false
+	},
+	"parent": "global:silicatyt",
+	"criteria": {
+		"trigger": {
+			"trigger": "minecraft:tick"
+		}
+	}
+}
