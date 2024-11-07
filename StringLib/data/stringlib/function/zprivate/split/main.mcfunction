@@ -6,7 +6,12 @@
 # - #StringLib.FindLength StringLib: Length of the separator (= length of the split)
 # - #StringLib.IsReversed StringLib: Is the list of indexes reversed?
 
-data remove storage stringlib:temp data.SplitIndexes[-1]
+# Get the start of the split
+execute store result score #StringLib.SplitStart StringLib run data remove storage stringlib:temp data.SplitIndexes[-1]
+
+# Get the end of the split
+scoreboard players operation #StringLib.SplitStop StringLib = #StringLib.SplitStart StringLib
+scoreboard players operation #StringLib.SplitStop StringLib += #StringLib.FindLength StringLib
 
 # Loop through the split indexes
 scoreboard players remove #StringLib.RemainingSplits StringLib 1
