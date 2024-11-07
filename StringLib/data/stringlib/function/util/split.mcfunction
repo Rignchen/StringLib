@@ -38,12 +38,19 @@ execute store result score #StringLib.SplitAmount StringLib run function stringl
 scoreboard players operation #StringLib.RemainingSplits StringLib = #StringLib.SplitAmount StringLib
 data remove storage stringlib:input split.Find
 
+# Empty the output
+data modify storage stringlib:output find set value []
+
 # Get the list of required variables
 data modify storage stringlib:temp data.String set from storage stringlib:input split.String
 data modify storage stringlib:temp data.SplitIndexes set from storage stringlib:output find
 
 # Get separator length
 execute store result score #StringLib.FindLength StringLib run data get storage stringlib:input split.Separator
+
+# Split the string
+execute if score #StringLib.RemainingSplits StringLib matches 0 run data modify storage stringlib:output split set value [$(String)]
+execute unless score #StringLib.RemainingSplits StringLib matches 0 run function stringlib:zprivate/split/main
 
 # Return
 scoreboard players add #StringLib.SplitAmount StringLib 1
