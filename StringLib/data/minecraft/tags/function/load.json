@@ -1,5 +1,5 @@
 {
-  "values": [
-    "stringlib:zprivate/load"
-  ]
+    "values": [
+        "#load:_private/load"
+    ]
 }
